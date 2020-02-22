@@ -1,0 +1,5 @@
+1. Collect first and last name
+2. Collect home address
+3. Collect SSN
+4. Create account
+5. Make initial deposit 
