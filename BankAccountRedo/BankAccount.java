@@ -1,41 +1,65 @@
+import java.util.*;
+
 /**
  * BankAccount2.0
  */
 public class BankAccount {
 
-    private int nAccountNumber = 0;
-    private static int nNextAccountNumber = 0;
+    private int accountNum = 0;
+    private static int nextAccountNum = 0;
     private String firstName = "";
     private String lastName = "";
     private String address = "";
     private int SSN = 0;
     private double deposit = 0.0;
+    private double withdrawal = 0.0;
+    private double balance = 0.0;
+    ArrayList<Integer> listAccountNum = null;
 
     public BankAccount() {
 
-        nNextAccountNumber++;
-        nAccountNumber = nNextAccountNumber;
+        nextAccountNum++;
+        accountNum = nextAccountNum;
+        // listAccountNum.add(accountNum);
+    } // default constructor
 
-    }
+    public BankAccount(int accountNum, String firstName, String lastName, String address, int SSN, double deposit,
+            double withdrawal, double balance) {
+        nextAccountNum++;
+        // listAccountNum.add(accountNum);
 
-    public BankAccount(int nAccountNumber, String firstName, String lastName, String address, int SSN, double deposit) {
-        nNextAccountNumber++;
-        nAccountNumber = nNextAccountNumber;
-
-        this.nAccountNumber = nAccountNumber;
+        this.accountNum = nextAccountNum;
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
         this.SSN = SSN;
         this.deposit = deposit;
-    // }
+        this.withdrawal = withdrawal;
+        this.balance = balance;
+    } // overloaded constructor
 
-    public int getNAccountNumber() {
-        return this.nAccountNumber;
+    public double getBalance() {
+        return this.balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+
+    public double getWithdrawal() {
+        return this.withdrawal;
+    }
+
+    public void setWithdrawal(double withdrawal) {
+        balance -= withdrawal;
+    }
+
+    public int getAccountNumber() {
+        return this.accountNum;
     }
 
     public void setNAccountNumber(int nAccountNumber) {
-        this.nAccountNumber = nAccountNumber;
+        this.accountNum = nAccountNumber;
     }
 
     public String getFirstName() {
@@ -75,11 +99,11 @@ public class BankAccount {
     }
 
     public void setDeposit(double deposit) {
-        this.deposit = deposit;
+        balance += deposit;
     }
 
     public BankAccount nAccountNumber(int nAccountNumber) {
-        this.nAccountNumber = nAccountNumber;
+        this.accountNum = nAccountNumber;
         return this;
     }
 
@@ -108,14 +132,13 @@ public class BankAccount {
         return this;
     }
 
-    // get first and last name
-    // get address
-    // get social security number
-    // get deposit
-
-    // set first and last name
-    // set address
-    // set social security number
-    // set deposit
+    public void printInfo() {
+        System.out.println("Account Number: " + getAccountNumber());
+        System.out.println("First Name: " + getFirstName());
+        System.out.println("Last Name: " + getLastName());
+        System.out.println("Address: " + getAddress());
+        System.out.println("SSN: " + getSSN());
+        System.out.println("Balance: $" + getBalance());
+    }
 
 } // end class
